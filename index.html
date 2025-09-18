@@ -7,7 +7,7 @@
   <meta name="description" content="Loja Coelho Style - Moda luxuosa e contemporânea. Compre pelo WhatsApp e receba em casa ou retire em nossa loja física em Ourinhos - SP.">
   <meta property="og:title" content="Loja Coelho Style | Boutique de Moda">
   <meta property="og:description" content="Moda luxuosa e contemporânea. Compre pelo WhatsApp e receba em casa ou retire em nossa loja física em Ourinhos - SP.">
-  <meta property="og:image" content="https://placehold.co/1200x630/000000/FFFFFF?text=Loja+Coelho+Style">
+  <meta property="og:image" content="img/produto1.jpeg">
   <meta property="og:url" content="https://lojacoelhostyle.com.br">
   <meta name="twitter:card" content="summary_large_image">
   
@@ -17,7 +17,7 @@
     2. Para adicionar/editar produtos: modifique o array 'products' abaixo
     3. Para trocar cores: altere as variáveis CSS em :root
     4. Para mudar textos: busque os elementos correspondentes no HTML
-    5. Para substituir imagens: altere as URLs nos objetos produto (image) e no hero (src)
+    5. As imagens devem estar no diretório "img/" com os nomes especificados
   -->
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -179,7 +179,7 @@
     /* Hero Section */
     .hero {
       height: 90vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1920x1080/000000/FFFFFF?text=Loja+Coelho+Style') center/cover no-repeat;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/produto1.jpeg') center/cover no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -1000,16 +1000,16 @@
         <div class="location-info">
           <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1rem;">Visite nossa loja física</h3>
           <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">
-            Rua Exemplo, 123 - Centro<br>
-            Ourinhos - SP, 19900-000<br>
+            Rua José Bonifácio, 643 - Centro<br>
+            Ourinhos - SP, 19900-050<br>
             Estacionamento disponível
           </p>
-          <a href="https://www.google.com/maps/place/Rua+Exemplo,+123+-+Centro,+Ourinhos+-+SP,+19900-000" target="_blank" class="location-button">
+          <a href="https://maps.app.goo.gl/7NGV55xC23JE7g7w6?g_st=awb" target="_blank" class="location-button">
             Ver no Google Maps
           </a>
         </div>
         <div class="location-map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.449627920088!2d-49.87174872456669!3d-22.97953593184435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c2e6b0a0b0b0b1%3A0xb0b0b0b0b0b0b0b0!2sRua%20Exemplo%2C%20123%20-%20Centro%2C%20Ourinhos%20-%20SP%2C%2019900-000!5e0!3m2!1spt-BR!2sbr!4v1650000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.449627920088!2d-49.87174872456669!3d-22.97953593184435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c2e6b0a0b0b0b1%3A0xb0b0b0b0b0b0b0b0!2sRua%20Jos%C3%A9%20Bonif%C3%A1cio%2C%20643%20-%20Centro%2C%20Ourinhos%20-%20SP%2C%2019900-050!5e0!3m2!1spt-BR!2sbr!4v1650000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
         </div>
       </div>
     </div>
@@ -1038,7 +1038,7 @@
       <div class="footer-contact">
         <p>WhatsApp: <a href="https://wa.me/message/P5PJ4D4PEAIGL1" target="_blank" style="color: var(--red); text-decoration: none;">+55 (XX) XXXXX-XXXX</a></p>
         <p>Instagram: <a href="https://www.instagram.com/lojacoelhostyle" target="_blank" style="color: var(--red); text-decoration: none;">@lojacoelhostyle</a></p>
-        <p>Endereço: Rua Exemplo, 123 - Centro, Ourinhos - SP</p>
+        <p>Endereço: <a href="https://maps.app.goo.gl/7NGV55xC23JE7g7w6?g_st=awb" target="_blank" style="color: var(--red); text-decoration: none;">Rua José Bonifácio, 643 - Centro, Ourinhos - SP</a></p>
       </div>
       <div class="footer-social">
         <a href="https://www.instagram.com/lojacoelhostyle" target="_blank">
@@ -1097,17 +1097,17 @@
     // Configurações
     const WHATSAPP_LINK = "https://wa.me/message/P5PJ4D4PEAIGL1";
     
-    // Array de produtos (instruções: substitua as URLs das imagens por suas próprias imagens)
+    // Array de produtos (instruções: as imagens devem estar no diretório "img/")
     const products = [
       {
         id: "COE001",
         name: "Vestido Longo Elegante",
         price: "R$ 299,90",
-        image: "img/180_joelheira.jpeg",
+        image: "img/produto1.jpeg",
         images: [
-          "https://placehold.co/600x800/000000/FFFFFF?text=Vestido+Elegante",
-          "https://placehold.co/600x800/000000/FFFFFF?text=Vestido+Elegante+2",
-          "https://placehold.co/600x800/000000/FFFFFF?text=Vestido+Elegante+3"
+          "img/produto1.jpeg",
+          "img/produto1_2.jpeg",
+          "img/produto1_3.jpeg"
         ],
         sizes: ["P", "M", "G", "GG"],
         description: "Vestido longo elegante perfeito para ocasiões especiais. Tecido de alta qualidade que valoriza a silhueta.",
@@ -1117,11 +1117,11 @@
         id: "COE002",
         name: "Blazer Estiloso",
         price: "R$ 349,90",
-        image: "https://placehold.co/600x800/000000/FFFFFF?text=Blazer+Estiloso",
+        image: "img/produto2.jpeg",
         images: [
-          "https://placehold.co/600x800/000000/FFFFFF?text=Blazer+Estiloso",
-          "https://placehold.co/600x800/000000/FFFFFF?text=Blazer+Estiloso+2",
-          "https://placehold.co/600x800/000000/FFFFFF?text=Blazer+Estiloso+3"
+          "img/produto2.jpeg",
+          "img/produto2_2.jpeg",
+          "img/produto2_3.jpeg"
         ],
         sizes: ["P", "M", "G", "GG"],
         description: "Blazer estiloso com corte moderno e tecido premium. Perfeito para looks executivos ou casuais chiques.",
@@ -1131,11 +1131,11 @@
         id: "COE003",
         name: "Calça Pantalona",
         price: "R$ 189,90",
-        image: "https://placehold.co/600x800/000000/FFFFFF?text=Calça+Pantalona",
+        image: "img/produto3.jpeg",
         images: [
-          "https://placehold.co/600x800/000000/FFFFFF?text=Calça+Pantalona",
-          "https://placehold.co/600x800/000000/FFFFFF?text=Calça+Pantalona+2",
-          "https://placehold.co/600x800/000000/FFFFFF?text=Calça+Pantalona+3"
+          "img/produto3.jpeg",
+          "img/produto3_2.jpeg",
+          "img/produto3_3.jpeg"
         ],
         sizes: ["36", "38", "40", "42"],
         description: "Calça pantalona com caimento perfeito e tecido confortável. Ideal para criar looks modernos e sofisticados.",
@@ -1145,11 +1145,11 @@
         id: "COE004",
         name: "Top Cropped",
         price: "R$ 129,90",
-        image: "https://placehold.co/600x800/000000/FFFFFF?text=Top+Cropped",
+        image: "img/produto4.jpeg",
         images: [
-          "https://placehold.co/600x800/000000/FFFFFF?text=Top+Cropped",
-          "https://placehold.co/600x800/000000/FFFFFF?text=Top+Cropped+2",
-          "https://placehold.co/600x800/000000/FFFFFF?text=Top+Cropped+3"
+          "img/produto4.jpeg",
+          "img/produto4_2.jpeg",
+          "img/produto4_3.jpeg"
         ],
         sizes: ["P", "M", "G"],
         description: "Top cropped moderno e versátil, perfeito para combinar com calças de cintura alta ou saias.",
@@ -1159,11 +1159,11 @@
         id: "COE005",
         name: "Saia Midi Plissada",
         price: "R$ 219,90",
-        image: "https://placehold.co/600x800/000000/FFFFFF?text=Saia+Midi",
+        image: "img/produto5.jpeg",
         images: [
-          "https://placehold.co/600x800/000000/FFFFFF?text=Saia+Midi",
-          "https://placehold.co/600x800/000000/FFFFFF?text=Saia+Midi+2",
-          "https://placehold.co/600x800/000000/FFFFFF?text=Saia+Midi+3"
+          "img/produto5.jpeg",
+          "img/produto5_2.jpeg",
+          "img/produto5_3.jpeg"
         ],
         sizes: ["P", "M", "G", "GG"],
         description: "Saia midi plissada com movimento elegante. Tecido leve e fluido que valoriza qualquer silhueta.",
@@ -1173,11 +1173,11 @@
         id: "COE006",
         name: "Conjunto Casual Chic",
         price: "R$ 399,90",
-        image: "https://placehold.co/600x800/000000/FFFFFF?text=Conjunto+Chic",
+        image: "img/produto6.jpeg",
         images: [
-          "https://placehold.co/600x800/000000/FFFFFF?text=Conjunto+Chic",
-          "https://placehold.co/600x800/000000/FFFFFF?text=Conjunto+Chic+2",
-          "https://placehold.co/600x800/000000/FFFFFF?text=Conjunto+Chic+3"
+          "img/produto6.jpeg",
+          "img/produto6_2.jpeg",
+          "img/produto6_3.jpeg"
         ],
         sizes: ["P", "M", "G", "GG"],
         description: "Conjunto casual chic perfeito para diversas ocasiões. Blazer e calça combinando em tecido premium.",
