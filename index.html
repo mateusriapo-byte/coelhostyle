@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja Coelho Style | Boutique de Moda</title>
+  <meta name="description" content="Loja Coelho Style - Moda luxuosa e contemporânea. Compre pelo WhatsApp e receba em casa ou retire em nossa loja física em Ourinhos - SP.">
+  <meta property="og:title" content="Loja Coelho Style | Boutique de Moda">
+  <meta property="og:description" content="Moda luxuosa e contemporânea. Compre pelo WhatsApp e receba em casa ou retire em nossa loja física em Ourinhos - SP.">
+  <meta property="og:image" content="https://placehold.co/1200x630/000000/FFFFFF?text=Loja+Coelho+Style">
+  <meta property="og:url" content="https://lojacoelhostyle.com.br">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- INSTRUÇÕES PARA PERSONALIZAÇÃO -->
+  <!-- 
+    1. Para alterar o número do WhatsApp: substitua o link no const WHATSAPP_LINK
+    2. Para adicionar/editar produtos: modifique o array 'products' abaixo
+    3. Para trocar cores: altere as variáveis CSS em :root
+    4. Para mudar textos: busque os elementos correspondentes no HTML
+    5. Para substituir imagens: altere as URLs nos objetos produto (image) e no hero (src)
+  -->
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --black: #000000;
+      --white: #FFFFFF;
+      --red: #E10600;
+      --gradient-start: #f58529;
+      --gradient-middle: #dd2a7b;
+      --gradient-end: #8134af;
+      --gray-light: #f5f5f5;
+      --gray: #e0e0e0;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+      --dark-button: #1a1a1a;
+      --darker-button: #0d0d0d;
+      --coelho-color: #ffffff;
+      --coelho-red: #e10600;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--white);
+      background-color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* Coelho no canto superior direito */
+    .coelho-logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 120px;
+      height: 120px;
+      z-index: 100;
+    }
+    
+    /* Logo principal */
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    
+    .logo span {
+      color: var(--red);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--white);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled {
+      padding: 0.75rem 2rem;
+      background-color: rgba(0, 0, 0, 0.95);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    
+    .nav-links a:hover {
+      color: var(--red);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .social-icon {
+      width: 24px;
+      height: 24px;
+      fill: var(--white);
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      fill: var(--red);
+      transform: translateY(-2px);
+    }
+    
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 5px;
+    }
+    
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--white);
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 90vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1920x1080/000000/FFFFFF?text=Loja+Coelho+Style') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem;
+      margin-top: 80px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards 0.3s;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--white);
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    .cta-button {
+      padding: 1rem 2.5rem;
+      background-color: var(--dark-button);
+      color: var(--white);
+      border: none;
+      border-radius: 30px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .cta-button:hover {
+      background-color: var(--darker-button);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: 0.5s;
+    }
+    
+    .cta-button:hover::before {
+      left: 100%;
+    }
+    
+    /* Products Section */
+    .section-title {
+      text-align: center;
+      margin: 4rem 0 2rem;
+      font-size: 2.5rem;
+      position: relative;
+      padding-bottom: 1rem;
+      color: var(--white);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+    }
+    
+    .products-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      padding: 0 2rem;
+      margin-bottom: 4rem;
+    }
+    
+    .product-card {
+      background: rgba(0, 0, 0, 0.9);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .product-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      background-color: var(--black);
+    }
+    
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+    
+    .product-info {
+      padding: 1.5rem;
+    }
+    
+    .product-tag {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: var(--red);
+      color: var(--white);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+    
+    .product-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    
+    .buy-button {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: var(--dark-button);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .buy-button:hover {
+      background-color: var(--darker-button);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .buy-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: 0.5s;
+    }
+    
+    .buy-button:hover::before {
+      left: 100%;
+    }
+    
+    /* About Section */
+    .about-section {
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 4rem 2rem;
+      margin: 4rem 0;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+    
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .about-text {
+      text-align: center;
+      max-width: 800px;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      color: var(--white);
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    .store-hours {
+      background-color: rgba(0, 0, 0, 0.95);
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Location Section */
+    .location-section {
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 4rem 2rem;
+      margin: 4rem 0;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+    
+    .location-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .location-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .location-info {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+    
+    .location-map {
+      flex: 1;
+      min-width: 300px;
+      height: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .location-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .location-button {
+      padding: 1rem 2rem;
+      background-color: var(--black);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      margin-top: 1rem;
+      box-shadow: var(--shadow);
+    }
+    
+    .location-button:hover {
+      background-color: var(--darker-button);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .location-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: 0.5s;
+    }
+    
+    .location-button:hover::before {
+      left: 100%;
+    }
+    
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .modal {
+      background-color: rgba(0, 0, 0, 0.95);
+      width: 90%;
+      max-width: 1000px;
+      max-height: 90vh;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      transform: scale(0.9);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .modal-overlay.active .modal {
+      transform: scale(1);
+    }
+    
+    .modal-header {
+      position: relative;
+      height: 400px;
+    }
+    
+    .modal-images {
+      display: flex;
+      height: 100%;
+    }
+    
+    .modal-main-image {
+      flex: 1;
+      object-fit: cover;
+      background-color: var(--black);
+    }
+    
+    .modal-thumbnails {
+      width: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    
+    .modal-thumbnail {
+      width: 100%;
+      height: 70px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      background-color: var(--black);
+    }
+    
+    .modal-thumbnail.active {
+      border-color: var(--red);
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+    
+    .close-modal:hover {
+      background-color: var(--red);
+      transform: rotate(90deg);
+    }
+    
+    .close-modal svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--black);
+    }
+    
+    .close-modal:hover svg {
+      fill: var(--white);
+    }
+    
+    .modal-content {
+      padding: 2rem;
+    }
+    
+    .modal-product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+    
+    .modal-product-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+    }
+    
+    .modal-description {
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      color: var(--white);
+    }
+    
+    .size-quantity-container {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .size-container, .quantity-container {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+    
+    .size-options {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .size-option {
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--gray);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      color: var(--white);
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    
+    .size-option:hover {
+      border-color: var(--red);
+      background-color: rgba(225, 6, 0, 0.2);
+    }
+    
+    .size-option.selected {
+      border-color: var(--red);
+      background-color: rgba(225, 6, 0, 0.3);
+      font-weight: 600;
+    }
+    
+    .quantity-input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid var(--gray);
+      border-radius: 8px;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      color: var(--white);
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    
+    .quantity-input:focus {
+      outline: none;
+      border-color: var(--red);
+    }
+    
+    .modal-buy-button {
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--dark-button);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .modal-buy-button:hover {
+      background-color: var(--darker-button);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .modal-buy-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: 0.5s;
+    }
+    
+    .modal-buy-button:hover::before {
+      left: 100%;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .footer-logo span {
+      color: var(--red);
+    }
+    
+    .footer-contact {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--white);
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-social-link {
+      width: 40px;
+      height: 40px;
+      fill: var(--white);
+      transition: all 0.3s ease;
+    }
+    
+    .footer-social-link:hover {
+      fill: var(--red);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      color: var(--white);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .products-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .hero h1 {
+        font-size: 3rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        z-index: 999;
+      }
+      
+      .nav-links.active {
+        transform: translateY(0);
+      }
+      
+      .nav-links a {
+        padding: 1rem 0;
+        font-size: 1.2rem;
+      }
+      
+      .hamburger {
+        display: flex;
+      }
+      
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+      
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+      
+      .hero {
+        height: 80vh;
+        margin-top: 80px;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .products-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .modal-images {
+        flex-direction: column;
+      }
+      
+      .modal-thumbnails {
+        width: 100%;
+        flex-direction: row;
+        height: 80px;
+      }
+      
+      .modal-thumbnail {
+        width: 70px;
+        height: 100%;
+      }
+      
+      .location-content {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .size-quantity-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Coelho logo no canto superior direito -->
+  <div class="coelho-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" width="120" height="120">
+      <defs>
+        <style>
+          .coelho-body { fill: white; }
+          .coelho-ear { fill: white; }
+          .coelho-eye { fill: red; }
+          .coelho-nose { fill: black; }
+          .coelho-tail { fill: white; }
+        </style>
+      </defs>
+      <!-- Corpo do coelho -->
+      <ellipse cx="100" cy="90" rx="30" ry="25" class="coelho-body"/>
+      <!-- Orelhas -->
+      <path d="M80 40 C70 20, 100 10, 120 20 C130 30, 120 50, 100 50 C80 50, 70 30, 80 40 Z" class="coelho-ear"/>
+      <path d="M120 40 C130 20, 100 10, 80 20 C70 30, 80 50, 100 50 C120 50, 130 30, 120 40 Z" class="coelho-ear"/>
+      <!-- Olhos -->
+      <circle cx="90" cy="80" r="5" class="coelho-eye"/>
+      <circle cx="110" cy="80" r="5" class="coelho-eye"/>
+      <!-- Nariz -->
+      <circle cx="100" cy="85" r="2" class="coelho-nose"/>
+      <!-- Rabo -->
+      <path d="M100 90 C110 100, 120 110, 110 120 C100 130, 90 120, 100 110 Z" class="coelho-tail"/>
+      <!-- Texto -->
+      <text x="100" y="135" font-family="Playfair Display, serif" font-size="24" font-weight="700" text-anchor="middle" fill="white" stroke="rgba(0,0,0,0.5)" stroke-width="2">Coelho Style</text>
+    </svg>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" class="logo">Coelho<span>Style</span></a>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#products">Produtos</a>
+      <a href="#about">Sobre</a>
+      <a href="#location">Localização</a>
+      <a href="#contact">Contato</a>
+      <a href="https://www.instagram.com/lojacoelhostyle" target="_blank" class="social-link">
+        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </a>
+      <a href="https://wa.me/message/P5PJ4D4PEAIGL1" target="_blank" class="social-link">
+        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+      </a>
+    </div>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h1>Estilo e Elegância</h1>
+    <p>Descubra peças exclusivas que combinam com seu estilo único</p>
+    <button class="cta-button" onclick="openWhatsApp()">Monte seu kit no WhatsApp</button>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products">
+    <h2 class="section-title">Nossos Produtos</h2>
+    <div class="products-container" id="products-container">
+      <!-- Products will be inserted here by JavaScript -->
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <h2 class="section-title">Sobre a Loja</h2>
+      <p class="about-text">
+        A Loja Coelho Style nasceu com o propósito de oferecer peças exclusivas e de alta qualidade para mulheres que valorizam o estilo e a elegância. 
+        Cada peça é cuidadosamente selecionada para garantir que você se sinta especial e confiante em qualquer ocasião.
+      </p>
+      <div class="store-hours">
+        De segunda a sábado das 10 às 18:30 — Ourinhos - SP — Loja física + online
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section id="location" class="location-section">
+    <div class="location-container">
+      <h2 class="section-title">Nossa Localização</h2>
+      <div class="location-content">
+        <div class="location-info">
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1rem;">Visite nossa loja física</h3>
+          <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">
+            Rua Exemplo, 123 - Centro<br>
+            Ourinhos - SP, 19900-000<br>
+            Estacionamento disponível
+          </p>
+          <a href="https://www.google.com/maps/place/Rua+Exemplo,+123+-+Centro,+Ourinhos+-+SP,+19900-000" target="_blank" class="location-button">
+            Ver no Google Maps
+          </a>
+        </div>
+        <div class="location-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.449627920088!2d-49.87174872456669!3d-22.97953593184435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c2e6b0a0b0b0b1%3A0xb0b0b0b0b0b0b0b0!2sRua%20Exemplo%2C%20123%20-%20Centro%2C%20Ourinhos%20-%20SP%2C%2019900-000!5e0!3m2!1spt-BR!2sbr!4v1650000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" style="padding: 4rem 2rem; text-align: center;">
+    <h2 class="section-title">Entre em Contato</h2>
+    <p style="max-width: 600px; margin: 0 auto 2rem;">
+      Fale conosco pelo WhatsApp ou nos siga no Instagram para ficar por dentro das novidades e promoções exclusivas.
+    </p>
+    <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+      <a href="https://www.instagram.com/lojacoelhostyle" target="_blank" class="location-button" style="background-color: var(--black);">
+        @lojacoelhostyle
+      </a>
+      <a href="https://wa.me/message/P5PJ4D4PEAIGL1" target="_blank" class="cta-button" style="background-color: var(--dark-button);">
+        WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">Coelho<span>Style</span></div>
+      <div class="footer-contact">
+        <p>WhatsApp: <a href="https://wa.me/message/P5PJ4D4PEAIGL1" target="_blank" style="color: var(--red); text-decoration: none;">+55 (XX) XXXXX-XXXX</a></p>
+        <p>Instagram: <a href="https://www.instagram.com/lojacoelhostyle" target="_blank" style="color: var(--red); text-decoration: none;">@lojacoelhostyle</a></p>
+        <p>Endereço: Rua Exemplo, 123 - Centro, Ourinhos - SP</p>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/lojacoelhostyle" target="_blank">
+          <svg class="footer-social-link" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+        <a href="https://wa.me/message/P5PJ4D4PEAIGL1" target="_blank">
+          <svg class="footer-social-link" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+        </a>
+      </div>
+      <p class="copyright">© 2023 Loja Coelho Style. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-images">
+          <img src="" alt="" class="modal-main-image" id="modal-main-image">
+          <div class="modal-thumbnails" id="modal-thumbnails">
+            <!-- Thumbnails will be inserted here by JavaScript -->
+          </div>
+        </div>
+        <div class="close-modal" id="close-modal">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="modal-content">
+        <h3 class="modal-product-name" id="modal-product-name"></h3>
+        <p class="modal-product-price" id="modal-product-price"></p>
+        <p class="modal-description" id="modal-description"></p>
+        <div class="size-quantity-container">
+          <div class="size-container">
+            <label class="form-label">Tamanho</label>
+            <div class="size-options" id="size-options">
+              <!-- Size options will be inserted here by JavaScript -->
+            </div>
+          </div>
+          <div class="quantity-container">
+            <label class="form-label">Quantidade</label>
+            <input type="number" min="1" value="1" class="quantity-input" id="quantity-input">
+          </div>
+        </div>
+        <button class="modal-buy-button" id="modal-buy-button">Comprar pelo WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Configurações
+    const WHATSAPP_LINK = "https://wa.me/message/P5PJ4D4PEAIGL1";
+    
+    // Array de produtos (instruções: substitua as URLs das imagens por suas próprias imagens)
+    const products = [
+      {
+        id: "COE001",
+        name: "Vestido Longo Elegante",
+        price: "R$ 299,90",
+        image: "https://placehold.co/600x800/000000/FFFFFF?text=Vestido+Elegante",
+        images: [
+          "https://placehold.co/600x800/000000/FFFFFF?text=Vestido+Elegante",
+          "https://placehold.co/600x800/000000/FFFFFF?text=Vestido+Elegante+2",
+          "https://placehold.co/600x800/000000/FFFFFF?text=Vestido+Elegante+3"
+        ],
+        sizes: ["P", "M", "G", "GG"],
+        description: "Vestido longo elegante perfeito para ocasiões especiais. Tecido de alta qualidade que valoriza a silhueta.",
+        tag: "novo"
+      },
+      {
+        id: "COE002",
+        name: "Blazer Estiloso",
+        price: "R$ 349,90",
+        image: "https://placehold.co/600x800/000000/FFFFFF?text=Blazer+Estiloso",
+        images: [
+          "https://placehold.co/600x800/000000/FFFFFF?text=Blazer+Estiloso",
+          "https://placehold.co/600x800/000000/FFFFFF?text=Blazer+Estiloso+2",
+          "https://placehold.co/600x800/000000/FFFFFF?text=Blazer+Estiloso+3"
+        ],
+        sizes: ["P", "M", "G", "GG"],
+        description: "Blazer estiloso com corte moderno e tecido premium. Perfeito para looks executivos ou casuais chiques.",
+        tag: "promoção"
+      },
+      {
+        id: "COE003",
+        name: "Calça Pantalona",
+        price: "R$ 189,90",
+        image: "https://placehold.co/600x800/000000/FFFFFF?text=Calça+Pantalona",
+        images: [
+          "https://placehold.co/600x800/000000/FFFFFF?text=Calça+Pantalona",
+          "https://placehold.co/600x800/000000/FFFFFF?text=Calça+Pantalona+2",
+          "https://placehold.co/600x800/000000/FFFFFF?text=Calça+Pantalona+3"
+        ],
+        sizes: ["36", "38", "40", "42"],
+        description: "Calça pantalona com caimento perfeito e tecido confortável. Ideal para criar looks modernos e sofisticados.",
+        tag: "exclusivo"
+      },
+      {
+        id: "COE004",
+        name: "Top Cropped",
+        price: "R$ 129,90",
+        image: "https://placehold.co/600x800/000000/FFFFFF?text=Top+Cropped",
+        images: [
+          "https://placehold.co/600x800/000000/FFFFFF?text=Top+Cropped",
+          "https://placehold.co/600x800/000000/FFFFFF?text=Top+Cropped+2",
+          "https://placehold.co/600x800/000000/FFFFFF?text=Top+Cropped+3"
+        ],
+        sizes: ["P", "M", "G"],
+        description: "Top cropped moderno e versátil, perfeito para combinar com calças de cintura alta ou saias.",
+        tag: "novo"
+      },
+      {
+        id: "COE005",
+        name: "Saia Midi Plissada",
+        price: "R$ 219,90",
+        image: "https://placehold.co/600x800/000000/FFFFFF?text=Saia+Midi",
+        images: [
+          "https://placehold.co/600x800/000000/FFFFFF?text=Saia+Midi",
+          "https://placehold.co/600x800/000000/FFFFFF?text=Saia+Midi+2",
+          "https://placehold.co/600x800/000000/FFFFFF?text=Saia+Midi+3"
+        ],
+        sizes: ["P", "M", "G", "GG"],
+        description: "Saia midi plissada com movimento elegante. Tecido leve e fluido que valoriza qualquer silhueta.",
+        tag: "tendência"
+      },
+      {
+        id: "COE006",
+        name: "Conjunto Casual Chic",
+        price: "R$ 399,90",
+        image: "https://placehold.co/600x800/000000/FFFFFF?text=Conjunto+Chic",
+        images: [
+          "https://placehold.co/600x800/000000/FFFFFF?text=Conjunto+Chic",
+          "https://placehold.co/600x800/000000/FFFFFF?text=Conjunto+Chic+2",
+          "https://placehold.co/600x800/000000/FFFFFF?text=Conjunto+Chic+3"
+        ],
+        sizes: ["P", "M", "G", "GG"],
+        description: "Conjunto casual chic perfeito para diversas ocasiões. Blazer e calça combinando em tecido premium.",
+        tag: "conjunto"
+      }
+    ];
+
+    // Variáveis globais
+    let currentProduct = null;
+    let selectedSize = null;
+
+    // Função para carregar produtos
+    function loadProducts() {
+      const productsContainer = document.getElementById('products-container');
+      productsContainer.innerHTML = '';
+      
+      products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.innerHTML = `
+          <div style="position: relative;">
+            <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+            ${product.tag ? `<div class="product-tag">${product.tag}</div>` : ''}
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">${product.name}</h3>
+            <p class="product-price">${product.price}</p>
+            <button class="buy-button" data-id="${product.id}">Comprar pelo WhatsApp</button>
+          </div>
+        `;
+        
+        productCard.addEventListener('click', (e) => {
+          if (e.target.classList.contains('buy-button') || e.target.closest('.buy-button')) {
+            openProductModal(product);
+          } else if (!e.target.closest('.product-tag')) {
+            openProductModal(product);
+          }
+        });
+        
+        productsContainer.appendChild(productCard);
+      });
+      
+      // Adicionar eventos aos botões de compra
+      document.querySelectorAll('.buy-button').forEach(button => {
+        button.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const productId = e.target.getAttribute('data-id');
+          const product = products.find(p => p.id === productId);
+          openProductModal(product);
+        });
+      });
+    }
+
+    // Função para abrir o modal do produto
+    function openProductModal(product) {
+      currentProduct = product;
+      selectedSize = null;
+      
+      // Preencher o modal
+      document.getElementById('modal-main-image').src = product.images[0];
+      document.getElementById('modal-main-image').alt = product.name;
+      document.getElementById('modal-product-name').textContent = product.name;
+      document.getElementById('modal-product-price').textContent = product.price;
+      document.getElementById('modal-description').textContent = product.description;
+      
+      // Preencher thumbnails
+      const thumbnailsContainer = document.getElementById('modal-thumbnails');
+      thumbnailsContainer.innerHTML = '';
+      product.images.forEach((image, index) => {
+        const thumbnail = document.createElement('img');
+        thumbnail.src = image;
+        thumbnail.alt = `${product.name} - Imagem ${index + 1}`;
+        thumbnail.className = 'modal-thumbnail';
+        if (index === 0) thumbnail.classList.add('active');
+        thumbnail.addEventListener('click', () => {
+          document.getElementById('modal-main-image').src = image;
+          document.querySelectorAll('.modal-thumbnail').forEach(thumb => thumb.classList.remove('active'));
+          thumbnail.classList.add('active');
+        });
+        thumbnailsContainer.appendChild(thumbnail);
+      });
+      
+      // Preencher opções de tamanho
+      const sizeOptionsContainer = document.getElementById('size-options');
+      sizeOptionsContainer.innerHTML = '';
+      product.sizes.forEach(size => {
+        const sizeOption = document.createElement('div');
+        sizeOption.className = 'size-option';
+        sizeOption.textContent = size;
+        sizeOption.addEventListener('click', () => {
+          document.querySelectorAll('.size-option').forEach(option => option.classList.remove('selected'));
+          sizeOption.classList.add('selected');
+          selectedSize = size;
+        });
+        sizeOptionsContainer.appendChild(sizeOption);
+      });
+      
+      // Selecionar o primeiro tamanho por padrão
+      if (product.sizes.length > 0) {
+        document.querySelector('.size-option').classList.add('selected');
+        selectedSize = product.sizes[0];
+      }
+      
+      // Configurar botão de compra no modal
+      const buyButton = document.getElementById('modal-buy-button');
+      buyButton.onclick = () => {
+        const quantity = document.getElementById('quantity-input').value;
+        if (!selectedSize) {
+          alert('Por favor, selecione um tamanho.');
+          return;
+        }
+        if (quantity < 1) {
+          alert('Por favor, selecione pelo menos 1 unidade.');
+          return;
+        }
+        sendWhatsAppMessage(product, selectedSize, quantity);
+      };
+      
+      // Mostrar modal
+      document.getElementById('modal-overlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Função para fechar o modal
+    function closeProductModal() {
+      document.getElementById('modal-overlay').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Função para enviar mensagem via WhatsApp
+    function sendWhatsAppMessage(product, size, quantity) {
+      const message = `Olá! Gostaria de comprar: ${product.name} (Código: ${product.id}). Tamanho: ${size}. Quantidade: ${quantity}.`;
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `${WHATSAPP_LINK}?text=${encodedMessage}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Função para abrir WhatsApp diretamente do CTA
+    function openWhatsApp() {
+      const message = `Olá! Gostaria de montar um kit personalizado com produtos da Loja Coelho Style.`;
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `${WHATSAPP_LINK}?text=${encodedMessage}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Event Listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProducts();
+      
+      // Hamburger menu
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+      
+      // Fechar modal ao clicar no overlay
+      document.getElementById('modal-overlay').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('modal-overlay')) {
+          closeProductModal();
+        }
+      });
+      
+      // Fechar modal com botão X
+      document.getElementById('close-modal').addEventListener('click', closeProductModal);
+      
+      // Fechar modal com ESC
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeProductModal();
+        }
+      });
+      
+      // Navbar scroll effect
+      window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+      
+      // Smooth scroll para links de navegação
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Fechar menu mobile se estiver aberto
+          document.querySelector('.hamburger').classList.remove('active');
+          document.querySelector('.nav-links').classList.remove('active');
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
